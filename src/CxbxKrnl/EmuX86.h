@@ -36,7 +36,11 @@
 
 #include <cstdint>
 
+bool EmuX86_CompileBlock(uint32_t addr);
 bool EmuX86_DecodeException(LPEXCEPTION_POINTERS e);
+void __stdcall EmuX86_IOWrite8(uint32_t port, uint8_t value);
+void __stdcall EmuX86_IOWrite16(uint32_t port, uint16_t value);
+void __stdcall EmuX86_IOWrite32(uint32_t port, uint32_t value);
 uint8_t __stdcall EmuX86_Read8(uint32_t addr);
 uint16_t __stdcall EmuX86_Read16(uint32_t addr);
 uint32_t __stdcall EmuX86_Read32(uint32_t addr);
