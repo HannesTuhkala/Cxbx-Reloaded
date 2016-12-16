@@ -136,6 +136,8 @@ typedef unsigned __int64                ULONGLONG;
 #define INLINE              __inline
 #define DECLSPEC_NORETURN   __declspec(noreturn)
 
+#define VOLATILE            volatile
+
 // ******************************************************************
 // * documentation purposes only
 // ******************************************************************
@@ -149,6 +151,50 @@ typedef unsigned __int64                ULONGLONG;
 // * KPROCESSOR_MODE
 // ******************************************************************
 typedef CCHAR KPROCESSOR_MODE;
+
+// ******************************************************************
+// * KWAIT_REASON
+// ******************************************************************
+typedef enum _KWAIT_REASON {
+	Executive,
+	FreePage,
+	PageIn,
+	PoolAllocation,
+	DelayExecution,
+	Suspended,
+	UserRequest,
+	WrExecutive,
+	WrFreePage,
+	WrPageIn,
+	WrPoolAllocation,
+	WrDelayExecution,
+	WrSuspended,
+	WrUserRequest,
+	WrEventPair,
+	WrQueue,
+	WrLpcReceive,
+	WrLpcReply,
+	WrVirtualMemory,
+	WrPageOut,
+	WrRendezvous,
+	Spare2,
+	Spare3,
+	Spare4,
+	Spare5,
+	WrCalloutStack,
+	WrKernel,
+	WrResource,
+	WrPushLock,
+	WrMutex,
+	WrQuantumEnd,
+	WrDispatchInt,
+	WrPreempted,
+	WrYieldExecution,
+	WrFastMutex,
+	WrGuardedMutex,
+	WrRundown,
+	MaximumWaitReason
+} KWAIT_REASON;
 
 // ******************************************************************
 // * MODE
@@ -549,17 +595,17 @@ typedef struct _KUSER_SHARED_DATA
 	/* Current low 32-bit of tick count and tick count multiplier.
 	* N.B. The tick count is updated each time the clock ticks.
 	*/
-	volatile ULONG TickCountLow;
+	ULONG VOLATILE TickCountLow;
 	UINT32 TickCountMultiplier;
 
 	/* Current 64-bit interrupt time in 100ns units. */
-	volatile KSYSTEM_TIME InterruptTime;
+	KSYSTEM_TIME VOLATILE InterruptTime;
 
 	/* Current 64-bit system time in 100ns units. */
-	volatile KSYSTEM_TIME SystemTime;
+	KSYSTEM_TIME VOLATILE SystemTime;
 
 	/* Current 64-bit time zone bias. */
-	volatile KSYSTEM_TIME TimeZoneBias;
+	KSYSTEM_TIME VOLATILE TimeZoneBias;
 }
 KUSER_SHARED_DATA, *PKUSER_SHARED_DATA;
 // This is only the top of the actual definition. For the complete version,

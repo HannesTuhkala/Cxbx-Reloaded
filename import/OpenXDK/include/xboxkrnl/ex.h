@@ -47,7 +47,7 @@ XBSYSAPI EXPORTNUM(15) PVOID NTAPI ExAllocatePoolWithTag
     IN ULONG Tag
 );
 
-XBSYSAPI EXPORTNUM(16) POBJECT_TYPE ExEventObjectType;
+XBSYSAPI EXPORTNUM(16) OBJECT_TYPE ExEventObjectType;
 
 // ******************************************************************
 // * ExFreePool
@@ -90,7 +90,7 @@ XBSYSAPI EXPORTNUM(21) LONGLONG FASTCALL ExInterlockedCompareExchange64
 	IN PKSPIN_LOCK Lock
 );
 
-XBSYSAPI EXPORTNUM(22) POBJECT_TYPE ExMutantObjectType;
+XBSYSAPI EXPORTNUM(22) OBJECT_TYPE ExMutantObjectType;
 
 // ******************************************************************
 // * ExQueryPoolBlockSize
@@ -148,9 +148,9 @@ XBSYSAPI EXPORTNUM(29) NTSTATUS NTAPI ExSaveNonVolatileSetting
     IN  SIZE_T              ValueLength
 );
 
-XBSYSAPI EXPORTNUM(30) POBJECT_TYPE ExSemaphoreObjectType;
+XBSYSAPI EXPORTNUM(30) OBJECT_TYPE ExSemaphoreObjectType;
 
-XBSYSAPI EXPORTNUM(31) POBJECT_TYPE ExTimerObjectType;
+XBSYSAPI EXPORTNUM(31) OBJECT_TYPE ExTimerObjectType;
 
 XBSYSAPI EXPORTNUM(32) PLIST_ENTRY FASTCALL ExfInterlockedInsertHeadList
 (
@@ -172,47 +172,47 @@ XBSYSAPI EXPORTNUM(34) PLIST_ENTRY FASTCALL ExfInterlockedRemoveHeadList
 	IN PKSPIN_LOCK Lock
 );
 
-XBSYSAPI EXPORTNUM(51) LONG FASTCALL XbInterlockedCompareExchange
+XBSYSAPI EXPORTNUM(51) LONG FASTCALL KRNL(InterlockedCompareExchange)
 (
 	IN OUT volatile PLONG Destination,
 	IN LONG  Exchange,
 	IN LONG  Comparand
 );
 
-XBSYSAPI EXPORTNUM(52) LONG FASTCALL XbInterlockedDecrement
+XBSYSAPI EXPORTNUM(52) LONG FASTCALL KRNL(InterlockedDecrement)
 (
 	IN OUT PLONG Addend
 );
 
-XBSYSAPI EXPORTNUM(53) LONG FASTCALL XbInterlockedIncrement
+XBSYSAPI EXPORTNUM(53) LONG FASTCALL KRNL(InterlockedIncrement)
 (
 	IN OUT PLONG Addend
 );
 
-XBSYSAPI EXPORTNUM(54) LONG FASTCALL XbInterlockedExchange
+XBSYSAPI EXPORTNUM(54) LONG FASTCALL KRNL(InterlockedExchange)
 (
 	IN volatile PLONG Destination,
 	IN LONG Value
 );
 
-XBSYSAPI EXPORTNUM(55) LONG FASTCALL XbInterlockedExchangeAdd
+XBSYSAPI EXPORTNUM(55) LONG FASTCALL KRNL(InterlockedExchangeAdd)
 (
 	IN volatile PLONG Addend,
 	IN LONG	Value
 );
 
 // Dxbx Note : The Xbox1 SINGLE_LIST strucures are the same as in WinNT
-XBSYSAPI EXPORTNUM(56) SINGLE_LIST_ENTRY * FASTCALL XbInterlockedFlushSList
+XBSYSAPI EXPORTNUM(56) SINGLE_LIST_ENTRY * FASTCALL KRNL(InterlockedFlushSList)
 (
 	IN PSLIST_HEADER ListHead
 );
 
-XBSYSAPI EXPORTNUM(57) SLIST_ENTRY * FASTCALL XbInterlockedPopEntrySList
+XBSYSAPI EXPORTNUM(57) SLIST_ENTRY * FASTCALL KRNL(InterlockedPopEntrySList)
 (
 	IN PSLIST_HEADER ListHead
 );
 
-XBSYSAPI EXPORTNUM(58) SLIST_ENTRY * FASTCALL XbInterlockedPushEntrySList
+XBSYSAPI EXPORTNUM(58) SLIST_ENTRY * FASTCALL KRNL(InterlockedPushEntrySList)
 (
 	IN PSLIST_HEADER ListHead,
 	IN PSLIST_ENTRY ListEntry
